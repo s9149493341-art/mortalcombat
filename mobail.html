@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mortal Kombat Wiki | Энциклопедия MK1 — Лор, геймплей, комбинации</title>
+    <link rel="stylesheet" href="css/mortal.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, sans-serif;
+            color: #e6e6f0;
+            line-height: 1.5;
+        }
+
+        .wiki-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .wiki-header {
+            border-bottom: 3px solid #b3002f;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .site-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #f5e7d9, #d4af7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .site-sub {
+            font-size: 1rem;
+            color: #adadc9;
+            margin-bottom: 0.5rem;
+        }
+
+        .dragon-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: #1e1e2a;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            border-left: 4px solid #b3002f;
+        }
+
+        .wiki-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .toc-sidebar {
+            background: #111118;
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            border: 1px solid #2a2a35;
+            position: sticky;
+            top: 1.5rem;
+            height: fit-content;
+            backdrop-filter: blur(2px);
+        }
+
+        .toc-sidebar h3 {
+            color: #ffb347;
+            font-size: 1.3rem;
+            border-left: 4px solid #b3002f;
+            padding-left: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-nav a {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            margin: 0.2rem 0;
+            color: #cccce6;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .toc-nav a:hover {
+            background: #2a2a35;
+            color: white;
+            padding-left: 1.2rem;
+        }
+
+        .toc-nav .section-head {
+            font-weight: 700;
+            color: #ffb347;
+            margin-top: 1rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .toc-nav .sub-item {
+            padding-left: 1.8rem;
+            font-size: 0.85rem;
+        }
+
+        .wiki-content {
+            background: #0f0f16;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #252530;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .wiki-content h1 {
+            font-size: 2rem;
+            border-bottom: 2px solid #b3002f;
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+        }
+
+        .wiki-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            color: #ffb347;
+            border-left: 5px solid #b3002f;
+            padding-left: 1rem;
+        }
+
+        .wiki-content h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #e2c28b;
+        }
+
+        .wiki-content h4 {
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem;
+            color: #d4af7a;
+        }
+
+        .wiki-card {
+            background: #13131c;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid #b3002f;
+        }
+
+        .button-combo {
+            background: #1a1a24;
+            border-radius: 14px;
+            padding: 0.7rem 1rem;
+            margin: 0.6rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #33334a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #2a2a35;
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #1b1b26;
+            color: #ffbc6e;
+        }
+
+        .character-badge {
+            display: inline-block;
+            background: #23232f;
+            border-radius: 30px;
+            padding: 0.2rem 0.9rem;
+            margin: 0.2rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+
+        .roster-item {
+            background: #13131c;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-weight: 500;
+            border: 1px solid #2c2c3a;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .lore-entry {
+            background: #0c0c14;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #b3002f;
+        }
+
+        .lore-entry strong {
+            color: #ffb347;
+        }
+
+        .interaction-block {
+            background: #0a0a12;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .interaction-category {
+            font-weight: bold;
+            color: #ffb347;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6a6a7e;
+            border-top: 1px solid #22222c;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .wiki-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toc-sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            .wiki-content {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wiki-container">
+        <div class="wiki-header">
+            <div>
+                <div class="site-title">MORTAL KOMBAT<img id="picture3" src="images/дракон3.png " <a name="kt"></a>
+                </div>
+                <div class="site-sub">Энциклопедия бойцов — полное руководство по MK1 (2023) | Лор, геймплей, комбинации
+                </div>
+            </div>
+            <div class="dragon-logo">DRAGON LOGO</div>
+        </div>
+
+        <div class="wiki-grid">
+            <aside class="toc-sidebar">
+                <h3>Содержание</h3>
+                <div class="toc-nav">
+                    <span class="section-head">1. Mortal Kombat: GAMEPLAY</span>
+                    <a href="#mechanics" class="sub-item">1.1 Механика боев</a>
+                    <a href="#combos-pad" class="sub-item">1.2 Комбинации кнопок на геймпаде</a>
+                    <a href="#team-synergy" class="sub-item">1.3 Комбинации персонажей + камео (Полный гайд)</a>
+
+                    <span class="section-head">2. ЛОР Mortal Kombat</span>
+                    <a href="#char-stats" class="sub-item">2.1 Персонажи (характеристики)</a>
+                    <a href="#lore-detailed" class="sub-item">2.2 Лор персонажей (Подробно)</a>
+                    <a href="#interactions" class="sub-item">2.3 Взаимодействие персонажей (Родственные связи, дружба,
+                        союзы)</a>
+                </div>
+                <img id="picture2" src="images/скорпион.jpg " <a name="ktt"></a>
+            </aside>
+
+            <main class="wiki-content">
+                <h1>Mortal Kombat 1: Полный гид по новой эре</h1>
+                <p>Добро пожаловать в независимую вики, посвящённую перезапуску легендарной франшизы — <strong>Mortal
+                        Kombat 1 (2023)</strong>. Здесь представлено всё: от механик и комбинаций до полного лора
+                    каждого бойца и их связей в новой временной линии.</p>
+
+                <!-- РАЗДЕЛ 1: GAMEPLAY -->
+                <h2 id="mechanics">1.1 Механика боев</h2>
+                <div class="wiki-card">
+                    <p><strong>Mortal Kombat 1</strong> — 2.5D-файтинг с уникальной системой «камео» (Kameo Fighters).
+                        Бой до двух побед в раунде.</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Fatal Blow</strong> — супер-атака при здоровье ниже 30%, один раз за матч. Наносит
+                            30-35% урона, блокируется.</li>
+                        <li><strong>Super Meter</strong> — шкала из 3 сегментов. Усиление приёмов (1 сегмент) или
+                            <strong>Breaker</strong> (3 сегмента) — прерывание вражеского комбо.
+                        </li>
+                        <li><strong>Kameo система</strong> — второй боец-ассистент. Вызов кнопкой R1/RB + направление. У
+                            каждого камео 4 уникальных приёма.</li>
+                        <li><strong>Бросок (Throw)</strong> — L1/LB, не блокируется.</li>
+                    </ul>
+                    <p>Камео-метр восстанавливается со временем — используйте ассистента для продления комбо, защиты или
+                        создания смешанных ситуаций.</p>
+                </div>
+
+                <h2 id="combos-pad">1.2 Комбинации кнопок на геймпаде</h2>
+                <p>Стандартные обозначения (PlayStation / Xbox): <strong>Square/X</strong> — передний удар,
+                    <strong>Triangle/Y</strong> — задний удар, <strong>Cross/A</strong> — фронт кик,
+                    <strong>Circle/B</strong> — задний кик. Блок — R2/RT.
+                </p>
+                <div class="wiki-card">
+                    <h4 style="margin-top:0;">Базовые спецприёмы</h4>
+                    <div class="button-combo"><strong>Скорпион:</strong> вниз-вправо + Square/X (Гарпун — притягивает
+                        врага)</div>
+                    <div class="button-combo"><strong>Лю Кан:</strong> вниз-влево + Triangle/Y (Файрбол)</div>
+                    <div class="button-combo"><strong>Саб-Зиро:</strong> вниз-вправо + Cross/A (Ледяная дуга —
+                        заморозка)</div>
+                    <div class="button-combo"><strong>Кенши:</strong> вниз-влево + Circle/B (Телекинетический меч Sento)
+                    </div>
+                    <div class="button-combo"><strong>Смоук:</strong> вниз-влево + Triangle/Y (Телепорт)</div>
+                    <p><strong>Усиление (EX):</strong> зажмите R1/RT при вводе спецприёма (тратит 1 сегмент суперметра).
+                    </p>
+                    <p><strong>Универсальные связки:</strong> Square, Triangle → Circle — простая строка. Square,
+                        Triangle, Cross — низкий завершитель.</p>
+                </div>
+
+                <!-- 1.3 ВСЕ РАБОЧИЕ КОМБИНАЦИИ ПЕРСОНАЖЕЙ + KAMEO -->
+                <h2 id="team-synergy">1.3 Комбинации персонажей + камео (Полный гайд)</h2>
+                <p>Ниже представлены лучшие и рабочие комбинации для каждого персонажа на основе мета-анализа.
+                    Камео-система — ключ к успеху.</p>
+
+                <div class="wiki-card">
+                    <h3>Лучшие камео (ассистенты)</h3>
+                    <p><strong>Фрост, Сайракс, Кунг Лао, Мотаро, Сарина</strong> — считаются лучшими камео из-за
+                        универсальности.</p>
+                    <p><strong>Кунг Лао</strong> — даёт Low Hat для безопасных смешанных атак, Spin для продления комбо
+                        и Teleport против зонеров.</p>
+                    <p><strong>Сарина</strong> — самый универсальный камео, подходящий почти всем благодаря Demonic
+                        Dance (переворот) и Kia's Blades.</p>
+                    <p><strong>Jax</strong> — даёт дополнительную полоску здоровья (+100 HP) и броню.</p>
+                </div>
+
+                <h3>Таблица комбинаций персонаж + камео</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Основной боец</th>
+                            <th>Лучшие камео</th>
+                            <th>Стратегия / Эффект</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Лю Кан</strong></td>
+                            <td>Кунг Лао, Jax</td>
+                            <td>Low Hat + огненные шары создают давление. Jax даёт +100 HP</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Скорпион</strong></td>
+                            <td>Сайракс, Скорпион (камео)</td>
+                            <td>Сайракс продлевает комбо после гарпуна</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Саб-Зиро</strong></td>
+                            <td>Сарина, Фрост</td>
+                            <td>Сарина даёт безопасные подтверждения и защиту</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Кенши</strong></td>
+                            <td>Фрост, Дарриус</td>
+                            <td>Фрост замораживает врага, давая время на установку Sento</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Джонни Кейдж</strong></td>
+                            <td>Кано, Кунг Лао</td>
+                            <td>Кано даёт броню и комбо-продлевалки</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Кунг Лао</strong></td>
+                            <td>Сарина, Кунг Лао</td>
+                            <td>Сарина — лучший выбор для продления комбо</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Генерал Шао</strong></td>
+                            <td>Кунг Лао, Страйкер, Мотаро, Соня</td>
+                            <td>Кунг Лао — самый популярный выбор через Low Hat. Страйкер — универсальность. Мотаро —
+                                телепорт. Соня — безопасные канселы</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Кван Чи</strong></td>
+                            <td>Сарина, Джанет Кейдж, Тремор, Jax</td>
+                            <td>Сарина — простейший выбор для продлений. Джанет Кейдж — лучшая на высоком уровне</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ермак</strong></td>
+                            <td>Сарина, Сектор</td>
+                            <td>Сарина для продления телекенических атак</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Хавик</strong></td>
+                            <td>Саб-Зиро, Мотаро</td>
+                            <td>Саб-Зиро — лучший выбор для хаотичного стиля</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Примечание: Сарина — универсальный выбор, подходит большинству персонажей. Jax даёт дополнительное
+                    здоровье и броню.</p>
+
+                <!-- РАЗДЕЛ 2: ЛОР — ПОЛНЫЙ СПИСОК ПЕРСОНАЖЕЙ -->
+                <h2 id="char-stats">2.1 Персонажи (характеристики)</h2>
+                <p>В Mortal Kombat 1 представлено <strong>23 основных бойца</strong> (плюс DLC). Каждый получил
+                    переосмысленную биографию в новой временной линии Лю Кана.</p>
+
+                <div class="roster-grid">
+                    <div class="roster-item">Лю Кан</div>
+                    <div class="roster-item">Скорпион</div>
+                    <div class="roster-item">Саб-Зиро</div>
+                    <div class="roster-item">Кунг Лао</div>
+                    <div class="roster-item">Джонни Кейдж</div>
+                    <div class="roster-item">Кенши</div>
+                    <div class="roster-item">Рейден</div>
+                    <div class="roster-item">Китана</div>
+                    <div class="roster-item">Милина</div>
+                    <div class="roster-item">Таня</div>
+                    <div class="roster-item">Рейн</div>
+                    <div class="roster-item">Смоук</div>
+                    <div class="roster-item">Рептилия</div>
+                    <div class="roster-item">Ли Мей</div>
+                    <div class="roster-item">Барака</div>
+                    <div class="roster-item">Герас</div>
+                    <div class="roster-item">Шан Цзун</div>
+                    <div class="roster-item">Генерал Шао</div>
+                    <div class="roster-item">Синдел</div>
+                    <div class="roster-item">Рейко</div>
+                    <div class="roster-item">Ашра</div>
+                    <div class="roster-item">Нитара</div>
+                    <div class="roster-item">Хавик</div>
+                </div>
+
+                <!-- ПОДРОБНЫЙ ЛОР КАЖДОГО ПЕРСОНАЖА -->
+                <h2 id="lore-detailed">2.2 Лор персонажей </h2>
+                <p>В новой эре, созданной Лю Каном, многие судьбы переписаны. Вот полная история каждого бойца.</p>
+
+                <div class="lore-entry"><strong>Лю Кан</strong> — Став Богом Огня после победы над Кроникой, Лю Кан
+                    создал новую временную линию, где надеялся на мир между царствами. Однако он скрывает своё
+                    божественное прошлое от других, выступая как простой чемпион Земного Царства.</div>
+                <div class="lore-entry"><strong>Скорпион (Куай Лян)</strong> — В этой линии Скорпион — не Ханзо Хасаши,
+                    а младший брат Би-Хана, Куай Лян. Он остаётся верен традиционным ценностям клана Лин Куэй в отличие
+                    от своего брата.</div>
+                <div class="lore-entry"><strong>Саб-Зиро (Би-Хан)</strong> — Великий магистр Лин Куэй, уставший от
+                    застоя клана и стремящийся превратить его в мировую державу любой ценой.</div>
+                <div class="lore-entry"><strong>Кунг Лао</strong> — Полевой работник из деревни Фэнцзянь, мечтающий о
+                    славе великого воина.</div>
+                <div class="lore-entry"><strong>Джонни Кейдж</strong> — Тщеславная кинозвезда, ищущая способ возродить
+                    карьеру через участие в турнире.</div>
+                <div class="lore-entry"><strong>Кенши</strong> — Бывший якудза, стремящийся вернуть честь семьи Такахаси
+                    через легендарный меч Сенто.</div>
+                <div class="lore-entry"><strong>Рейден</strong> — Добродушный полевой работник, которого Лю Кан выбрал
+                    своим преемником. Теперь он носит Медальон Дракона, дарующий силу молнии.</div>
+                <div class="lore-entry"><strong>Китана</strong> — Младшая принцесса Внешнего Мира, готовящая сестру
+                    Милину к роли наследницы.</div>
+                <div class="lore-entry"><strong>Милина</strong> — Старшая наследница престола Внешнего Мира, страдающая
+                    от неизлечимой болезни Таркат, которую скрывает от всех.</div>
+                <div class="lore-entry"><strong>Таня</strong> — Высокопоставленная воительница Умгади, элитной гвардии,
+                    охраняющей королевскую семью. Состоит в запретных отношениях с Милиной.</div>
+                <div class="lore-entry"><strong>Рейн</strong> — Почитаемый маг Внешнего Мира, мастер гидромантии, ищущий
+                    величайшие тайны магии.</div>
+                <div class="lore-entry"><strong>Смоук</strong> — Воин Лин Куэй, использующий дымную магию вместо
+                    стихийных сил. Приёмный брат Саб-Зиро и Скорпиона.</div>
+                <div class="lore-entry"><strong>Рептилия (Сайзот)</strong> — Изгнанник из расы рептилоидов Затерра,
+                    обладающий редкой мутацией — способностью принимать человеческий облик.</div>
+                <div class="lore-entry"><strong>Ли Мей</strong> — Первый констебль полиции столицы Внешнего Мира,
+                    стремящаяся искупить вину за убийство императора Джеррода.</div>
+                <div class="lore-entry"><strong>Барака</strong> — Бывший уважаемый торговец, после заражения болезнью
+                    Таркат ставший изгоем.</div>
+                <div class="lore-entry"><strong>Герас</strong> — Искусственное существо, вечный страж Песочных Часов,
+                    воссозданный Лю Каном для защиты новой временной линии.</div>
+                <div class="lore-entry"><strong>Шан Цзун</strong> — Талантливый мошенник из Внешнего Мира, которому
+                    загадочный незнакомец предложил стать могущественным колдуном.</div>
+                <div class="lore-entry"><strong>Генерал Шао</strong> — Величайший чемпион Внешнего Мира, выкованный
+                    суровым воспитанием отца в идеального солдата. В прошлых линиях известен как Шао Кан.</div>
+                <div class="lore-entry"><strong>Синдел</strong> — Императрица Внешнего Мира, мать Китаны и Милины. После
+                    убийства мужа Джеррода борется за защиту семьи и империи.</div>
+                <div class="lore-entry"><strong>Рейко</strong> — Верный помощник Генерала Шао, в юности спасённый им во
+                    время войны Кафалла.</div>
+                <div class="lore-entry"><strong>Ашра</strong> — Демон из Преисподней, стремящаяся очистить свою душу с
+                    помощью зачарованного криса.</div>
+                <div class="lore-entry"><strong>Нитара</strong> — Крылатая вампирша из царства Ватернус, ищущая способы
+                    выжить свой вымирающий народ.</div>
+                <div class="lore-entry"><strong>Хавик</strong> — Агент хаоса из царства Сейдо, стремящийся разрушить
+                    социальный порядок и заменить его анархией.</div>
+
+                <!-- ВЗАИМОДЕЙСТВИЯ ПЕРСОНАЖЕЙ В ЛОРЕ (родственные связи, дружба, союзы) -->
+                <h2 id="interactions">2.3 Взаимодействие персонажей </h2>
+                <p>В новой временной линии, созданной Лю Каном, связи между персонажами значительно изменились. Ниже
+                    представлены основные родственные узы, дружеские отношения и политические союзы, определяющие лор
+                    Mortal Kombat 1.</p>
+
+                <div class="interaction-block">
+                    <div class="interaction-category">Семейные связи</div>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li><strong>Синдел</strong> — Императрица Внешнего Мира, мать <strong>Китаны</strong> и
+                            <strong>Милины</strong>. Её муж, император Джеррод, был убит при невыясненных
+                            обстоятельствах, что стало ключевым событием сюжета.
+                        </li>
+                        <li><strong>Саб-Зиро (Би-Хан)</strong> и <strong>Скорпион (Куай Лян)</strong> — родные братья,
+                            вместе руководящие кланом Лин Куэй. Би-Хан является великим магистром, Куай Лян — его правой
+                            рукой. В отличие от предыдущих линий, они не враги, но их взгляды на будущее клана
+                            расходятся.</li>
+                        <li><strong>Смоук</strong> — приёмный брат Би-Хана и Куай Ляна, выросший вместе с ними в Лин
+                            Куэй. Они считают друг друга братьями по духу, хотя кровного родства нет.</li>
+                        <li><strong>Джонни Кейдж</strong> — в будущем станет отцом <strong>Кэсси Кейдж</strong>, однако
+                            в событиях MK1 его дочь ещё не родилась. Его отношения с <strong>Сонией Блейд</strong>
+                            находятся в зачаточном состоянии.</li>
+                    </ul>
+
+                    <div class="interaction-category">Дружба и союзничество</div>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li><strong>Лю Кан</strong> и <strong>Рейден</strong> — наставник и ученик. Лю Кан лично выбрал
+                            Рейдена своим преемником, видя в нём чистоту духа и потенциал. Рейден беспрекословно
+                            доверяет Лю Кану.</li>
+                        <li><strong>Кунг Лао</strong> и <strong>Рейден</strong> — лучшие друзья и коллеги по работе в
+                            деревне Фэнцзянь. Вместе они были призваны Лю Каном для защиты Земного Царства.</li>
+                        <li><strong>Китана</strong> и <strong>Милина</strong> — сёстры, искренне любящие друг друга.
+                            Китана помогает Милине скрывать её болезнь Таркат и готовит сестру к роли императрицы.</li>
+                        <li><strong>Милина</strong> и <strong>Таня</strong> — состоят в романтических отношениях,
+                            которые держатся в секрете из-за статуса Тани как телохранителя и придворных интриг.</li>
+                        <li><strong>Генерал Шао</strong> и <strong>Рейко</strong> — верный вассал и господин. Рейко
+                            обязан Шао жизнью и безоговорочно следует за ним, даже когда его методы становятся
+                            жестокими.</li>
+                        <li><strong>Ли Мей</strong> и <strong>Джеррод</strong> (покойный император) — Ли Мей была личной
+                            телохранительницей Джеррода и до сих пор мучима чувством вины за его убийство. Это
+                            определяет её мотивацию в сюжете.</li>
+                        <li><strong>Ашра</strong> и <strong>Лю Кан</strong> — сложные отношения. Лю Кан дал Ашре шанс на
+                            искупление, но Герас предрекает, что она никогда не сможет очиститься от демонической
+                            сущности.</li>
+                    </ul>
+
+                    <div class="interaction-category">Враждующие группировки и политические союзы</div>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li><strong>Шан Цзун</strong> и <strong>Кван Чи</strong> — злодейский альянс, направленный на
+                            свержение Лю Кана и захват Песочных Часов. Кван Чи в этой линии является бывшим шахтёром,
+                            получившим тёмную магию от падшего бога.</li>
+                        <li><strong>Генерал Шао</strong> и <strong>Синдел</strong> — напряжённые отношения. Шао
+                            подозревается в убийстве Джеррода, и Синдел не доверяет ему, но вынуждена терпеть его как
+                            сильнейшего воина Внешнего Мира.</li>
+                        <li><strong>Саб-Зиро (Би-Хан)</strong> против <strong>Лю Кана</strong> — Би-Хан считает Лю Кана
+                            слабым божеством и тайно вынашивает планы по захвату власти, используя клан Лин Куэй как
+                            военную силу.</li>
+                        <li><strong>Хавик</strong> против <strong>всех</strong> — Хавик является агентом хаоса,
+                            стремящимся разрушить любой порядок. Он не вступает в долгосрочные союзы, но может временно
+                            использовать других персонажей для своих целей.</li>
+                        <li><strong>Нитара</strong> — действует в одиночку, пытаясь спасти свой вымирающий народ. Она не
+                            доверяет ни Внешнему Миру, ни Земному Царству.</li>
+                        <li><strong>Рептилия</strong> — изгнанник, не имеющий союзников. Его поиски способа вернуть свой
+                            истинный облик делают его уязвимым для манипуляций со стороны Шан Цзуна.</li>
+                    </ul>
+
+                    <div class="interaction-category">Бывшие связи из предыдущих временных линий</div>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Герас</strong> — единственный персонаж, помимо Лю Кана, помнящий события предыдущих
+                            линий. Он хранит молчание о прошлом, но его намёки иногда проскальзывают в диалогах.</li>
+                        <li><strong>Лю Кан</strong> — помнит все предыдущие временные линии, включая свои отношения с
+                            <strong>Китаной</strong>, которая в новой реальности не испытывает к нему романтических
+                            чувств. Это создаёт внутренний конфликт бога огня.
+                        </li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 2rem; text-align: right; font-style: italic;">Актуально на 2026 год — полный лор,
+                    все родственные связи и дружеские отношения в одной вики.</p>
+            </main>
+        </div>
+
+        <footer>
+            <p>Mortal Kombat Wiki — неофициальный справочник. Основано на официальных данных NetherRealm Studios. Все
+                права принадлежат Warner Bros. Games.</p>
+            <p>Fatality, Friendship и фанатская забота о каждой детали вселенной Mortal Kombat.</p>
+        </footer>
+    </div>
+    <img id="picture" src="images/иконка.jpg  " <a name="kttk"></a>
+</body>
+
+</html>
