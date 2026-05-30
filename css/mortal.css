@@ -1,0 +1,390 @@
+/* ============================================
+   Mortal Kombat Wiki - Основные стили
+   Тёмная тема, энциклопедический стиль
+   Фиксированный логотип: images/иконка.jpg
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0f;
+    font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, sans-serif;
+    color: #e6e6f0;
+    line-height: 1.5;
+    padding-bottom: 120px;
+
+}
+
+#picture {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: auto;
+    z-index: 1000;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 12px rgba(209, 14, 14, 0.5));
+    border-radius: 12px;
+}
+
+#picture :hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+#picture2 {
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    height: auto;
+    z-index: 1000;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 12px rgba(16, 1, 1, 0.5));
+    border-radius: 12px;
+}
+
+#picture3 {
+    bottom: 20px;
+    left: 20px;
+    width: 500px;
+    height: 70px;
+    z-index: 1000;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 12px rgba(16, 1, 1, 0.5));
+    border-radius: 12px;
+}
+
+
+/* Альтернативное расположение слева — можно раскомментировать при необходимости */
+/*
+.mortal-kombat-footer-logo {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: auto;
+}
+*/
+
+/* Контейнер для основного содержимого */
+.wiki-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ===== ШАПКА САЙТА ===== */
+.wiki-header {
+    border-bottom: 3px solid #b3002f;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.site-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #f5e7d9, #d4af7a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.site-sub {
+    font-size: 1rem;
+    color: #adadc9;
+    margin-bottom: 0.5rem;
+}
+
+.dragon-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background: #1e1e2a;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    border-left: 4px solid #b3002f;
+}
+
+/* ===== СЕТКА ОСНОВНОГО КОНТЕНТА ===== */
+.wiki-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+/* ===== БОКОВОЕ ОГЛАВЛЕНИЕ (TOC) ===== */
+.toc-sidebar {
+    background: #111118;
+    border-radius: 20px;
+    padding: 1.5rem 1rem;
+    border: 1px solid #2a2a35;
+    position: sticky;
+    top: 1.5rem;
+    height: fit-content;
+    backdrop-filter: blur(2px);
+}
+
+.toc-sidebar h3 {
+    color: #ffb347;
+    font-size: 1.3rem;
+    border-left: 4px solid #b3002f;
+    padding-left: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.toc-nav a {
+    display: block;
+    padding: 0.5rem 0.8rem;
+    margin: 0.2rem 0;
+    color: #cccce6;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.toc-nav a:hover {
+    background: #2a2a35;
+    color: white;
+    padding-left: 1.2rem;
+}
+
+.toc-nav .section-head {
+    font-weight: 700;
+    color: #ffb347;
+    margin-top: 1rem;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.toc-nav .sub-item {
+    padding-left: 1.8rem;
+    font-size: 0.85rem;
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+.wiki-content {
+    background: #0f0f16;
+    border-radius: 28px;
+    padding: 1.8rem 2rem;
+    border: 1px solid #252530;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.wiki-content h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid #b3002f;
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding-bottom: 0.3rem;
+}
+
+.wiki-content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem 0;
+    color: #ffb347;
+    border-left: 5px solid #b3002f;
+    padding-left: 1rem;
+}
+
+.wiki-content h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem;
+    color: #e2c28b;
+}
+
+.wiki-content h4 {
+    font-size: 1.1rem;
+    margin: 1rem 0 0.5rem;
+    color: #d4af7a;
+}
+
+/* ===== КАРТОЧКИ И БЛОКИ ===== */
+.wiki-card {
+    background: #13131c;
+    border-radius: 20px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.2rem 0;
+    border-left: 4px solid #b3002f;
+}
+
+.button-combo {
+    background: #1a1a24;
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    margin: 0.6rem 0;
+    font-family: monospace;
+    font-size: 0.9rem;
+    border: 1px solid #33334a;
+}
+
+/* ===== ТАБЛИЦЫ ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+
+th,
+td {
+    border: 1px solid #2a2a35;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #1b1b26;
+    color: #ffbc6e;
+}
+
+/* ===== БЭЙДЖИ ПЕРСОНАЖЕЙ ===== */
+.character-badge {
+    display: inline-block;
+    background: #23232f;
+    border-radius: 30px;
+    padding: 0.2rem 0.9rem;
+    margin: 0.2rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin: 1rem 0;
+}
+
+.roster-item {
+    background: #13131c;
+    border-radius: 40px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+    border: 1px solid #2c2c3a;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ===== БЛОКИ ЛОРА И ИНТЕРАКЦИЙ ===== */
+.lore-entry {
+    background: #0c0c14;
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #b3002f;
+}
+
+.lore-entry strong {
+    color: #ffb347;
+}
+
+.interaction-block {
+    background: #0a0a12;
+    border-radius: 16px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.interaction-category {
+    font-weight: bold;
+    color: #ffb347;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+/* ===== ПОДВАЛ САЙТА (обычный текст) ===== */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6a6a7e;
+    border-top: 1px solid #22222c;
+    padding-top: 2rem;
+}
+
+/* ===== ИЗОБРАЖЕНИЯ (общие стили) ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* Плейсхолдер для отсутствующих изображений */
+.image-placeholder {
+    background: linear-gradient(135deg, #1a1a24, #0f0f16);
+    border: 1px dashed #b3002f;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    color: #6a6a7e;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ===== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) ===== */
+@media (max-width: 850px) {
+    .wiki-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .toc-sidebar {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .wiki-content {
+        padding: 1.2rem;
+    }
+
+    .site-title {
+        font-size: 1.8rem;
+    }
+
+    .mortal-kombat-footer-logo {
+        width: 120px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ УТИЛИТЫ ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #ffb347;
+}
+
+.dragon-red {
+    color: #b3002f;
+}
